@@ -17,8 +17,8 @@ const tokenExtractor = async ( request, response, next ) => {
             user_id: request.decodedToken.id
           }
         })
-        throw new Error()
-        // return response.status(401).end({ error: 'Token invalid' })
+        // throw new Error()
+        return response.status(401).end({ error: 'Token invalid' })
       }
       
       const session = await Session.findAll({
@@ -26,8 +26,8 @@ const tokenExtractor = async ( request, response, next ) => {
       })
 
       if ( session.length === 0 ) {
-        throw new Error()
-        // return response.status(401).json({ error: 'Token invalid' })
+        // throw new Error()
+        return response.status(401).json({ error: 'Token invalid' })
       }
 
     } catch ( error ){

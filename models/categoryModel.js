@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize')
 
 const { sequelize } = require('../database/db')
 
-class Session extends Model {}
+class Category extends Model {}
 
-Session.init({
+Category.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,7 +15,7 @@ Session.init({
     allowNull: false,
     references: { model: 'users', key: 'id' },
   },
-  token: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false
   }
@@ -23,8 +23,8 @@ Session.init({
   sequelize,
   underscored: true,
   timestamps: false,
-  modelName: 'session',
-  tableName: 'sessions'
+  modelName: 'category',
+  tableName: 'categories'
 })
 
-module.exports = Session
+module.exports = Category
