@@ -14,6 +14,8 @@ router.post( '/', tokenExtractor, async ( request, response ) => {
     })
   }
 
+  console.log( body.types )
+
   const newCategory = {
     user_id: request.decodedToken.id,
     name: body.name

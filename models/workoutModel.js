@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize')
 
 const { sequelize } = require('../database/db')
 
-class Category extends Model {}
+class Workout extends Model {}
 
-Category.init({
+Workout.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,17 +15,22 @@ Category.init({
     allowNull: false,
     references: { model: 'users', key: 'id' },
   },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
+  category_id: {
+    type: DataTypes.INTEGER,
+    references: { model: 'categories', key: 'id' },
+  },
+  duration_mins: {
+    type: DataTypes.INTEGER
+  },
+  notes: {
+    type: DataTypes.STRING
   }
 }, {
   sequelize,
   underscored: true,
   timestamps: false,
-  modelName: 'category',
-  tableName: 'categories'
+  modelName: 'workout',
+  tableName: 'workouts'
 })
 
-module.exports = Category
+module.exports = Workout
